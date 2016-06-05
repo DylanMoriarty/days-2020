@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="post-content letter handfont" itemprop="articleBody">
+    {{ content }}
+  </div>
+  {% if page.date == true%}
+    <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
+  {% endif %}
+  {% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
+
+	<div class = "article-foot">
+		<a href="../"><i class="fa fa-home fa" style="font-size:2em;"></i></a>
+	</div>
+</article>

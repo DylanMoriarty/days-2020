@@ -1,0 +1,17 @@
+# Site settings
+title: DylanMoriarty.github.io
+safe:           false
+source:         app
+exclude:
+  - assets/scripts
+  - assets/vendor
+  - assets/styles
+  - README.md
+timezone: America/New_York
+highlighter: false 
+
+baseurl: ""
+
+collections:
+  blog:
+    output: true
