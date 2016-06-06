@@ -13,5 +13,5 @@ highlighter: false
 baseurl: ""
 
 collections:
-  blog:
-    output: true
+  dailies:
+    output: dailies

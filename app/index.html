@@ -5,68 +5,34 @@ layout: default
 <div class="classy-shadow">
 </div>
 
-<div class="flex-container calendar">
-  <div class= "flex-item">
-    <div class="flex-date">
-      <p>Monday, June 6th</p>
-    </div>
-  </div>
-   <div class= "flex-item">
-    <div class="flex-date">
-      <p>Monday, June 6th</p>
-    </div>
-  </div>  <div class= "flex-item">
-    <div class="flex-date">
-      <p>Monday, June 6th</p>
-    </div>
-  </div>  <div class= "flex-item">
-    <div class="flex-date">
-      <p>Monday, June 6th</p>
-    </div>
-  </div>  <div class= "flex-item">
-    <div class="flex-date">
-      <p>Monday, June 6th</p>
-    </div>
-  </div>  <div class= "flex-item">
-    <div class="flex-date">
-      <p>Monday, June 6th</p>
-    </div>
-  </div>  <div class= "flex-item">
-    <div class="flex-date">
-      <p>Monday, June 6th</p>
-    </div>
-  </div>
-<div class= "flex-item">
-    <div class="flex-date">
-      <p>Monday, June 6th</p>
-    </div>
-  </div><div class= "flex-item">
-    <div class="flex-date">
-      <p>Monday, June 6th</p>
-    </div>
-  </div><div class= "flex-item">
-    <div class="flex-date">
-      <p>Monday, June 6th</p>
-    </div>
-  </div><div class= "flex-item">
-    <div class="flex-date">
-      <p>Monday, June 6th</p>
-    </div>
-  </div><div class= "flex-item">
-    <div class="flex-date">
-      <p>Monday, June 6th</p>
-    </div>
-  </div><div class= "flex-item">
-    <div class="flex-date">
-      <p>Monday, June 6th</p>
-    </div>
-  </div><div class= "flex-item">
-    <div class="flex-date">
-      <p>Monday, June 6th</p>
-    </div>
-  </div><div class= "flex-item">
-    <div class="flex-date">
-      <p>Monday, June 6th</p>
-    </div>
+<div class="calendar-banner">
+  <div class="">
+</div>
+
+<div class="full-view">
+  <div class="close-me">X</div>
+  <div class="full-view-contain">
+    <fig class="full-view-image"></fig>
+    <figcaption>Words Words</figcaption>
   </div>
 </div>
+
+<div class="flex-container calendar">
+
+{% for p in site.dailies %}
+  {% if p.link %}
+  <a href="{{ p.link }}" target="_blank">
+  {% endif %}
+  <div class= "calendar-item open" {% if p.image %}style="background:url('{{ p.image  }}') no-repeat; background-position:center; background-size:cover" {% endif %}>
+    {% if p.link %}<div class="calendar-link"></div>{% elsif p.date %}<div class="image-link"></div>{% endif %}
+    <div class="calendar-date {{ p.invert }}">
+      <p>{{ p.date | date: "%A, %B %-d" }}</p>
+    </div>
+  </div>
+  {% if p.link %}
+  </a>
+  {% endif %}
+{% endfor %}
+
+</div>
+
