@@ -1,5 +1,6 @@
 ---
 layout: default
+lang: en
 ---
 
 <div class="classy-shadow">
@@ -12,27 +13,77 @@ layout: default
 <div class="full-view">
   <div class="close-me">X</div>
   <div class="full-view-contain">
-    <fig class="full-view-image"></fig>
-    <figcaption>Words Words</figcaption>
+    <fig class="full-view-image"><img src=""></img></fig>
+    <div class="float-right">
+      <h1 class="title">This is a title</h1>
+      <p class ="descrip">These are some words about the thing</p>
+      <p class ="descrip-link"></p>
+    </div>
   </div>
 </div>
 
 <div class="flex-container calendar">
 
 {% for p in site.dailies %}
-  {% if p.link %}
-  <a href="{{ p.link }}" target="_blank">
-  {% endif %}
-  <div class= "calendar-item open" {% if p.image %}style="background:url('{{ p.image  }}') no-repeat; background-position:center; background-size:cover" {% endif %}>
-    {% if p.link %}<div class="calendar-link"></div>{% elsif p.date %}<div class="image-link"></div>{% endif %}
+<!--   Sets up variables for use in Javascript-->  
+  <script>
+    function thing(){
+      if(PT.link != null){
+        var cart = PT.link;
+      }else{
+        var cart = []
+      };
+
+      cart.push("{{p.link}}")
+
+      PT.link = cart
+    };
+    function thing2(){
+      if(PT.descrip != null){
+        var cart = PT.descrip;
+      }else{
+        var cart = []
+      };
+
+      cart.push("{{p.descrip}}")
+
+      PT.descrip = cart
+    };
+    function thing3(){
+      if(PT.image != null){
+        var cart = PT.image;
+      }else{
+        var cart = []
+      };
+
+      cart.push("{{p.image}}")
+
+      PT.image = cart
+    };
+    function thing4(){
+      if(PT.title != null){
+        var cart = PT.title;
+      }else{
+        var cart = []
+      };
+
+      cart.push("{{p.title}}")
+
+      PT.title = cart
+    };
+
+    thing();
+    thing2();
+    thing3();
+    thing4();
+  </script>
+
+  <div class= "calendar-item script{{ p.num }} open" style="background:url('{{ p.image  }}') no-repeat; background-position:center; background-size:cover">
+    <div class="image-link"></div>
     <div class="calendar-date {{ p.invert }}">
-      <p>{{ p.date | date: "%A, %B %-d" }}</p>
+      <p>{{ p.date | date: "%A, %B %-d" }} </p>
     </div>
   </div>
-  {% if p.link %}
-  </a>
-  {% endif %}
 {% endfor %}
 
 </div>
-

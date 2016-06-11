@@ -23,10 +23,6 @@
     "test": "echo \"No tests\" && exit 0",
     "postinstall": "[ -f _config-dev.yml ] || touch _config-dev.yml"
   },
-  "browser": {
-    "jquery-flexslider": "./app/assets/scripts/vendor/jquery.flexslider-min.js",
-    "splitpic": "./app/assets/scripts/splitpic.js"
-  },
   "browserify": {
     "transform": [
       "babelify",
@@ -74,6 +70,7 @@
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0",
     "yamljs": "^0.2.7",
-    "jquery": "^1.7.4"
+    "jquery": "^1.7.4",
+    "front-matter": "^2.1.0"
   }
 }
