@@ -1,17 +1,13 @@
-# Site settings
 source: app
-title: DylanMoriarty.github.io
-safe:           false
-source:         app
+title: ElectionData
+# To exclude inside docs/
 exclude:
-  - assets/scripts
-  - assets/vendor
-  - assets/styles
-  - README.md
-timezone: America/New_York
-highlighter: false 
-
+  - assets/graphics/collecticons
 baseurl: ""
+timezone: America/New_York
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 
 collections:
   dailies:

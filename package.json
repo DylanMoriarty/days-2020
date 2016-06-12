@@ -1,18 +1,21 @@
 {
-  "name": "DylanMoriarty",
+  "name": "OpenElectionData",
   "version": "0.1.0",
-  "description": "Home for the things cobbled together by Dylan Moriarty",
+  "description": "Database & Documentation for Open Election Data",
   "repository": {
     "type": "git",
-    "url": "DylanMoriarty.github.io"
+    "url": ""
   },
   "author": {
-    "name": "Dylan Moriarty",
-    "url": "DylanMoriarty.github.io"
+    "name": "Development Seed",
+    "url": "https://developmentseed.org"
   },
   "license": "",
   "bugs": {
-    "url": "https://github.com/DylanMoriarty/DylanMoriarty.github.io/issues"
+    "url": ""
+  },
+  "browser": {
+    "jquery-flexslider": "./app/assets/scripts/vendor/jquery.flexslider-2.6.0.min.js"
   },
   "homepage": "",
   "scripts": {
@@ -70,7 +73,6 @@
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0",
     "yamljs": "^0.2.7",
-    "jquery": "^1.7.4",
-    "front-matter": "^2.1.0"
+    "jquery": "^1.7.4"
   }
 }
