@@ -1,21 +1,18 @@
 {
-  "name": "OpenElectionData",
+  "name": "DylanMoriarty",
   "version": "0.1.0",
-  "description": "Database & Documentation for Open Election Data",
+  "description": "Home for the things cobbled together by Dylan Moriarty",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "DylanMoriarty.github.io"
   },
   "author": {
-    "name": "Development Seed",
-    "url": "https://developmentseed.org"
+    "name": "Dylan Moriarty",
+    "url": "DylanMoriarty.github.io"
   },
   "license": "",
   "bugs": {
-    "url": ""
-  },
-  "browser": {
-    "jquery-flexslider": "./app/assets/scripts/vendor/jquery.flexslider-2.6.0.min.js"
+    "url": "https://github.com/DylanMoriarty/DylanMoriarty.github.io/issues"
   },
   "homepage": "",
   "scripts": {
@@ -25,6 +22,10 @@
     "lint": "eslint docs/assets/scripts/ --ext .js",
     "test": "echo \"No tests\" && exit 0",
     "postinstall": "[ -f _config-dev.yml ] || touch _config-dev.yml"
+  },
+  "browser": {
+    "jquery-flexslider": "./app/assets/scripts/vendor/jquery.flexslider-min.js",
+    "splitpic": "./app/assets/scripts/splitpic.js"
   },
   "browserify": {
     "transform": [
