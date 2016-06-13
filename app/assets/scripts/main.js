@@ -66,13 +66,11 @@ function keyfunctions(){
             break;
 
           case 37:
-            var yesterday = parseInt(currentday) - 1;
-
             $('.left-key')
                 .css("color", "#e5c53e")
                 .css("margin-top", "4px");
-
-            pickaday(yesterday)
+            
+            yesterday(currentday);
 
             setTimeout(leftreturncss, 400);
 
@@ -84,13 +82,11 @@ function keyfunctions(){
             break;
 
           case 39:
-            var tomorrow = parseInt(currentday) + 1;
-
             $('.right-key')
                 .css("color", "#e5c53e")
                 .css("margin-top", "4px");
 
-            pickaday(tomorrow)
+            tomorrow(currentday)
 
             setTimeout(rightreturncss, 400);
 
@@ -115,11 +111,34 @@ function keyfunctions(){
     });
 
     $(".left-key").click(function(){
-        var yesterday = parseInt(currentday) - 1;
-        pickaday(yesterday)
+        yesterday(currentday);
+        pickaday(yesterday);
     });
     $(".right-key").click(function(){
-        var yesterday = parseInt(currentday) + 1;
-        pickaday(yesterday)
+        tomorrow(currentday);
+        pickaday(tomorrow);
     });
 };
+
+
+function yesterday(day){
+    if(day > 0){
+        var yesterday = parseInt(day) - 1;
+    }else{
+        var yesterday = 0
+        console.log("I have not the time nor the will to document every day of my past.")
+    };
+    pickaday(yesterday);
+}
+
+function tomorrow(day){
+    var present = PT.image.length - 1;
+
+    if(day < present){
+        var tomorrow = parseInt(day) + 1;
+    }else{
+        var tomorrow = present;
+        console.log("There is no tomorrow :(")
+    };
+    pickaday(tomorrow);
+}
