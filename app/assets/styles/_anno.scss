@@ -4,7 +4,6 @@ html{
 
 body{
 		background-color: #DDD;
-		background: url("/assets/graphics/2016/6-July/background.png");	  
 		height: 100%;
 }
 
@@ -68,7 +67,7 @@ body{
 .image-link{
     content: "";
     display: block;
-    background: url("assets/graphics/collecticons/resize-out.svg") no-repeat;
+    background: url("/assets/graphics/collecticons/resize-out.svg") no-repeat;
     background-size: 60px;
     background-position: center;
     width: 100%;

@@ -3,6 +3,8 @@ var currentday = 0;
 
 $(document).ready(function() {
 
+    $('body').css("background", 'url("assets/graphics/2016/6-July/background.png")');
+
     $(".calendar-item").click(function(){
         var classes = $(this).attr("class").split(' ')[1].replace("script", "");
 
@@ -30,8 +32,8 @@ $(document).ready(function() {
 
             function leftreturncss(){
             $('.left-key')
-                .css("color", "#ddd")
-                .css("margin-top", "0px");                
+                .css("color", "")
+                .css("margin-top", "");                
             }
             break;
 
@@ -48,11 +50,11 @@ $(document).ready(function() {
 
             function rightreturncss(){
             $('.right-key')
-                .css("color", "#ddd")
-                .css("margin-top", "0px");                
+                .css("color", "")
+                .css("margin-top", "");                
             }
           break;
-          
+
         }
     });
 
