@@ -11,16 +11,35 @@ lang: en
 </div>
 
 <div class="full-view">
-  <div class="close-me">X</div>
-  <div class="full-view-contain">
-    <fig class="full-view-image"><img src=""></img></fig>
-    <div class="float-right">
-      <h1 class="title">This is a title</h1>
-      <p class ="descrip">These are some words about the thing</p>
-      <p class ="descrip-link"></p>
+  <div class="close-me"><i class="collecticons collecticons-xmark"></i></div>
+  <div class="left-key"><i class="collecticons collecticons-leftkey-invert"></i></div>
+  <div class="right-key"><i class="collecticons collecticons-rightkey-invert"></i></div>
+  <div class="full-view-targetarea">
+    <div class="full-view-contain">
+      <fig class="full-view-image"><img src=""></img></fig>
+      <div class="float-right">
+        <h1 class="title">This is a title</h1>
+        <p class ="descrip">These are some words about the thing</p>
+        <p class ="descrip-link"></p>
+      </div>
     </div>
   </div>
 </div>
+
+<div class="info-trigger">
+
+</div>
+
+<div class="info-view">
+  <div class="info-close-me"></div>
+  <div class="info-view-contain">
+  </div>
+</div>
+
+<div class="header-graphic">
+  <img src="assets/graphics/2016/6-July/header.png"></img>
+</div>
+
 
 <div class="flex-container calendar">
 
@@ -81,7 +100,7 @@ lang: en
   <div class= "calendar-item script{{ p.num }} open" style="background:url('{{ p.image  }}') no-repeat; background-position:center; background-size:cover">
     <div class="image-link"></div>
     <div class="calendar-date {{ p.invert }}">
-      <p>{{ p.date | date: "%A, %B %-d" }} </p>
+      <p>{{ p.date | date: "%a %-d" }} </p>
     </div>
   </div>
 {% endfor %}

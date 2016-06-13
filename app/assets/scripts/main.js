@@ -13,25 +13,65 @@ $(document).ready(function() {
     $(document).keyup(function(e) {
         switch(e.keyCode)  {
           // Right
+          case 27:
+            $(".full-view").delay("slow").fadeOut();
+            break;
+
           case 37:
             var yesterday = parseInt(currentday) - 1;
+
+            $('.left-key')
+                .css("color", "#e5c53e")
+                .css("margin-top", "4px");
+
             pickaday(yesterday)
+
+            setTimeout(leftreturncss, 400);
+
+            function leftreturncss(){
+            $('.left-key')
+                .css("color", "#ddd")
+                .css("margin-top", "0px");                
+            }
             break;
+
           case 39:
             var tomorrow = parseInt(currentday) + 1;
+
+            $('.right-key')
+                .css("color", "#e5c53e")
+                .css("margin-top", "4px");
+
             pickaday(tomorrow)
+
+            setTimeout(rightreturncss, 400);
+
+            function rightreturncss(){
+            $('.right-key')
+                .css("color", "#ddd")
+                .css("margin-top", "0px");                
+            }
           break;
+          
         }
     });
 
-    $(".close-me").click(function(){
+    // $(".close-me").click(function(){
+    //     $(".full-view").delay("slow").fadeOut();
+    // });
+
+    $(".full-view-targetarea").click(function(){
         $(".full-view").delay("slow").fadeOut();
     });
 
-    $(".full-view").click(function(){
-        $(".full-view").delay("slow").fadeOut();
+    $(".left-key").click(function(){
+        var yesterday = parseInt(currentday) - 1;
+        pickaday(yesterday)
     });
-
+    $(".right-key").click(function(){
+        var yesterday = parseInt(currentday) + 1;
+        pickaday(yesterday)
+    });
 });
 
 function pickaday(day){
