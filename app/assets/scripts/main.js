@@ -35,9 +35,10 @@ function pickaday(day){
     $(".title").html(PT.title[day])
     $(".descrip").html(PT.descrip[day])
     $(".full-view-image img").attr('src', PT.image[day]);
+    var linkname = PT.linkname[day];
 
     // make link, if there's one
-    var linksrc = '<a href="'+PT.link[day]+'" target="_blank">This Link</a>';
+    var linksrc = '<a href="'+PT.link[day]+'" target="_blank">'+linkname+' &nbsp <i class="collecticons collecticons-expand-top-right"></i></a>';
 
     if(PT.link[day] != ""){
         $(".descrip-link").html(linksrc);            

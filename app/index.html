@@ -18,7 +18,7 @@ lang: en
     <div class="full-view-contain">
       <fig class="full-view-image"><img src=""></img></fig>
       <div class="float-right">
-        <h1 class="title">This is a title</h1>
+        <h2 class="title">This is a title</h2>
         <p class ="descrip">These are some words about the thing</p>
         <p class ="descrip-link"></p>
       </div>
@@ -98,11 +98,23 @@ lang: en
 
       PT.title = cart
     };
+    function thing5(){
+      if(PT.linkname != null){
+        var cart = PT.linkname;
+      }else{
+        var cart = []
+      };
+
+      cart.push("{{p.linkname}}")
+
+      PT.linkname = cart
+    };
 
     thing();
     thing2();
     thing3();
     thing4();
+    thing5();
   </script>
 
   <div class= "calendar-item script{{ p.num }} open" style="background:url('{{ p.image  }}') no-repeat; background-position:center; background-size:cover">

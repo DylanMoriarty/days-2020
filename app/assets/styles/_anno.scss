@@ -106,13 +106,14 @@ body{
 .float-right{
 	float: right;
 	width: 40%;
-	color: white;
+	color: #ddd;
 	text-shadow: 0 2px 3px rgba(0,0,0,0.6);
 	margin-left: 2em;
-	h1{
+	h2{
 		display: table-cell;
+		font-size:1.4em;
 		margin-bottom: 1em;
-		border-bottom: 1px #999 solid;
+		border-bottom: 2px #555 solid;
 		&:after{
 	    content: "";
 	    display: table-cell;
@@ -120,7 +121,9 @@ body{
 		}
 	}
 	p{
-		margin: 1.5em 0;
+		line-height: 1.7em;
+		font-size: 0.9em;
+		margin: 1.3em 0;
 	}
 }
 
