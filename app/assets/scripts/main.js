@@ -8,15 +8,60 @@ $(document).ready(function() {
     $(".calendar-item").click(function(){
         var classes = $(this).attr("class").split(' ')[1].replace("script", "");
 
+        hideinfo_trigger();
         pickaday(classes);
         $(".full-view").delay("fast").fadeIn();
     });
 
+    $('.info-trigger').click(function(){
+        hideinfo_trigger();
+        $(".info-view").delay("fast").fadeIn();
+    })
+
+    $('.info-close-me').click(function(){
+        $(".info-view").delay("fast").fadeOut();
+        showinfo_trigger();
+    })
+
+    keyfunctions();
+});
+
+function pickaday(day){
+    //update global day for navigation
+    currentday = day;
+    console.log(day);
+
+    // resert title, description, et image
+    $(".title").html(PT.title[day])
+    $(".descrip").html(PT.descrip[day])
+    $(".full-view-image img").attr('src', PT.image[day]);
+
+    // make link, if there's one
+    var linksrc = '<a href="'+PT.link[day]+'" target="_blank">This Link</a>';
+
+    if(PT.link[day] != ""){
+        $(".descrip-link").html(linksrc);            
+    }else{
+        $(".descrip-link").html("");            
+    };
+}
+
+function hideinfo_trigger(){
+    $('.info-trigger').delay(0).fadeOut();
+}
+
+function showinfo_trigger(){
+    $('.info-trigger').delay(1000).fadeIn();
+}
+
+function keyfunctions(){
     $(document).keyup(function(e) {
         switch(e.keyCode)  {
           // Right
           case 27:
             $(".full-view").delay("slow").fadeOut();
+            $(".info-view").delay("fast").fadeOut();
+            showinfo_trigger();
             break;
 
           case 37:
@@ -58,12 +103,14 @@ $(document).ready(function() {
         }
     });
 
-    // $(".close-me").click(function(){
-    //     $(".full-view").delay("slow").fadeOut();
-    // });
+    $(".close-me").click(function(){
+        $(".full-view").delay("slow").fadeOut();
+        showinfo_trigger();
+    });
 
     $(".full-view-targetarea").click(function(){
         $(".full-view").delay("slow").fadeOut();
+        showinfo_trigger();
     });
 
     $(".left-key").click(function(){
@@ -74,25 +121,4 @@ $(document).ready(function() {
         var yesterday = parseInt(currentday) + 1;
         pickaday(yesterday)
     });
-});
-
-function pickaday(day){
-    //update global day for navigation
-    currentday = day;
-    console.log(day);
-
-    // resert title, description, et image
-    $(".title").html(PT.title[day])
-    $(".descrip").html(PT.descrip[day])
-    $(".full-view-image img").attr('src', PT.image[day]);
-
-    // make link, if there's one
-    var linksrc = '<a href="'+PT.link[day]+'" target="_blank">This Link</a>';
-
-    if(PT.link[day] != ""){
-        $(".descrip-link").html(linksrc);            
-    }else{
-        $(".descrip-link").html("");            
-    };
-}
-
+};
