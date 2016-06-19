@@ -1,11 +1,12 @@
 global.$ = global.jQuery = global.jquery = require('jquery');
-var currentday = 0;
+var currentday = PT.image.length - 1;
 
 $(document).ready(function() {
 
     $('body').css("background", 'url("assets/graphics/2016/6-July/background.png")');
 
     $(".calendar-item").click(function(){
+
         var classes = $(this).attr("class").split(' ')[1].replace("script", "");
 
         hideinfo_trigger();
@@ -29,18 +30,18 @@ $(document).ready(function() {
 function pickaday(day){
     //update global day for navigation
     currentday = day;
-    console.log(day);
+    var translation = PT.image.length - day - 1;
 
     // resert title, description, et image
-    $(".title").html(PT.title[day])
-    $(".descrip").html(PT.descrip[day])
-    $(".full-view-image img").attr('src', PT.image[day]);
-    var linkname = PT.linkname[day];
+    $(".title").html(PT.title[translation])
+    $(".descrip").html(PT.descrip[translation])
+    $(".full-view-image img").attr('src', PT.image[translation]);
+    var linkname = PT.linkname[translation];
 
     // make link, if there's one
-    var linksrc = '<a href="'+PT.link[day]+'" target="_blank">'+linkname+' &nbsp <i class="collecticons collecticons-expand-top-right"></i></a>';
+    var linksrc = '<a href="'+PT.link[translation]+'" target="_blank">'+linkname+' &nbsp <i class="collecticons collecticons-expand-top-right"></i></a>';
 
-    if(PT.link[day] != ""){
+    if(PT.link[translation] != ""){
         $(".descrip-link").html(linksrc);            
     }else{
         $(".descrip-link").html("");            
@@ -70,7 +71,7 @@ function keyfunctions(){
                 .css("color", "#e5c53e")
                 .css("margin-top", "4px");
             
-            yesterday(currentday);
+            tomorrow(currentday);
 
             setTimeout(leftreturncss, 400);
 
@@ -86,7 +87,7 @@ function keyfunctions(){
                 .css("color", "#e5c53e")
                 .css("margin-top", "4px");
 
-            tomorrow(currentday)
+            yesterday(currentday)
 
             setTimeout(rightreturncss, 400);
 
@@ -111,11 +112,11 @@ function keyfunctions(){
     });
 
     $(".left-key").click(function(){
-        yesterday(currentday);
+        tomorrow(currentday);
         pickaday(yesterday);
     });
     $(".right-key").click(function(){
-        tomorrow(currentday);
+        yesterday(currentday);
         pickaday(tomorrow);
     });
 };
