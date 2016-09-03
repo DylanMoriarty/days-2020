@@ -2,7 +2,7 @@ global.$ = global.jQuery = global.jquery = require('jquery');
 var currentday = PT.image.length - 1;
 
 $(document).ready(function() {
-    $('body').css("background", 'url("assets/graphics/2016/6-July/background.png")');
+    $('body').css("background", 'url("assets/graphics/2016/6-June/background.png")');
 
     $(".calendar-item").click(function(){
 

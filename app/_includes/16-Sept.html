@@ -1,4 +1,4 @@
-{% for p in site.{{ include.date }} reversed %}
+{% for p in site.16-Sept reversed %}
 <!--   Sets up variables for use in Javascript-->  
   <script>
     function thing(){
@@ -63,11 +63,12 @@
     thing4();
     thing5();
   </script>
-
+  
   <div class= "calendar-item script{{ p.num }} open" style="background:url('{{ p.image  }}') no-repeat; background-position:center; background-size:cover">
     <div class="image-link"></div>
     <div class="calendar-date {{ p.invert }}">
       <p>{{ p.date | date: "%a %-d" }} </p>
     </div>
   </div>
+
 {% endfor %}
