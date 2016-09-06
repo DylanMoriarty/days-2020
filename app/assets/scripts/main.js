@@ -26,27 +26,6 @@ $(document).ready(function() {
     keyfunctions();
 });
 
-function pickaday(day){
-    //update global day for navigation
-    currentday = day;
-    var translation = PT.image.length - day - 1;
-
-    // resert title, description, et image
-    $(".title").html(PT.title[translation])
-    $(".descrip").html(PT.descrip[translation])
-    $(".full-view-image img").attr('src', PT.image[translation]);
-    var linkname = PT.linkname[translation];
-
-    // make link, if there's one
-    var linksrc = '<a href="'+PT.link[translation]+'" target="_blank">'+linkname+' &nbsp <i class="collecticons collecticons-expand-top-right"></i></a>';
-
-    if(PT.link[translation] != ""){
-        $(".descrip-link").html(linksrc);            
-    }else{
-        $(".descrip-link").html("");            
-    };
-}
-
 function hideinfo_trigger(){
     $('.info-trigger').delay(0).fadeOut();
 }
@@ -112,11 +91,9 @@ function keyfunctions(){
 
     $(".left-key").click(function(){
         tomorrow(currentday);
-        pickaday(yesterday);
     });
     $(".right-key").click(function(){
         yesterday(currentday);
-        pickaday(tomorrow);
     });
 };
 
@@ -141,4 +118,27 @@ function tomorrow(day){
         console.log("There is no tomorrow :(")
     };
     pickaday(tomorrow);
+}
+
+function pickaday(day){
+    //update global day for navigation
+    console.log(day)
+
+    currentday = day;
+    var translation = PT.image.length - day - 1;
+
+    // resert title, description, et image
+    $(".title").html(PT.title[translation])
+    $(".descrip").html(PT.descrip[translation])
+    $(".full-view-image img").attr('src', PT.image[translation]);
+    var linkname = PT.linkname[translation];
+
+    // make link, if there's one
+    var linksrc = '<a href="'+PT.link[translation]+'" target="_blank">'+linkname+' &nbsp <i class="collecticons collecticons-expand-top-right"></i></a>';
+
+    if(PT.link[translation] != ""){
+        $(".descrip-link").html(linksrc);            
+    }else{
+        $(".descrip-link").html("");            
+    };
 }
