@@ -137,7 +137,7 @@ body{
 
 @keyframes birthdayColor {
     0% {border-color: gold;}
-    25% {border-color: #EFFFAD;}
+    25% {border-color: #FFFAA3;}
     50% {border-color: #FFFE00;}
     100% {border-color: gold;}
 }
@@ -168,6 +168,9 @@ body{
 		.calendar-link, .image-link{
 			opacity: 0.9;
 		}
+	}
+	.calendar-date{
+		background-color: #FFFAA3;
 	}
 }
 
