@@ -64,7 +64,7 @@
     thing5();
   </script>
   
-  <div class= "calendar-item script{{ p.num }} open" style="background:url('{{ p.image  }}') no-repeat; background-position:center; background-size:cover">
+  <div class= "calendar-item script{{ p.num }} {{ p.name }} open" style="background:url('{{ p.image  }}') no-repeat; background-position:center; background-size:cover">
     <div class="image-link"></div>
     <div class="calendar-date {{ p.invert }}">
       <p>{{ p.date | date: "%a %-d" }} </p>
