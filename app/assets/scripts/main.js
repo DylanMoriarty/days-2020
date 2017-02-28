@@ -1,144 +1,113 @@
-global.$ = global.jQuery = global.jquery = require('jquery');
-var currentday = PT.image.length - 1;
+var currentDay = 4
+var taco = document.querySelector('.day-modal')
+var numOfDays = document.querySelectorAll('.calendar-item')
+var totalDays = numOfDays.length - 1
+console.log(PT)
 
-$(document).ready(function() {
-    $('body').css("background", 'url("assets/graphics/2016/6-June/background.png")');
+document.querySelector('.collecticons-xmark').addEventListener('click', function(){
+	killModal()
+})
 
-    $(".calendar-item").click(function(){
+document.querySelector('.full-mask-exit').addEventListener('click', function(){
+	killModal()
+})
 
-        var classes = $(this).attr("class").split(' ')[1].replace("script", "");
+document.querySelector('.oh-the-days').addEventListener('click', function(){
+	console.log(currentDay)
+})
 
-        hideinfo_trigger();
-        pickaday(classes);
-        $(".full-view").delay("fast").fadeIn();
-    });
+numOfDays.forEach(link => {
+	link.addEventListener('click', function(event) {
+		var classes = String(event.srcElement.className).replace( /^\D+/g, '')
+		makeModalsGreatAgain(classes)
+	})
+})
 
-    $('.info-trigger').click(function(){
-        hideinfo_trigger();
-        $(".info-view").delay("fast").fadeIn();
-    })
+function makeModalsGreatAgain(value) {
+  taco.className = 'day-modal fadeIn'
+  currentDay = value - 1
+  sunrise()
+}
 
-    $('.info-close-me').click(function(){
-        $(".info-view").delay("fast").fadeOut();
-        showinfo_trigger();
-    })
+function killModal() {
+  taco.className = 'day-modal fadeOut'
+}
 
-    keyfunctions();
+function sunrise() {
+	var newTitle = PT.when[currentDay]
+	var newLink = '<a href="' + PT.link[currentDay] + '">' + PT.linkname[currentDay] + '</a>'
+	var newNotes = PT.notes[currentDay]
+
+	if(PT.more[currentDay]) {
+		var newImage = '<img src="/assets/graphics/full/' + PT.month[currentDay] + '/f-' + PT.day[currentDay] + 'a.' + PT.imageType[currentDay] + '"></img><img src="/assets/graphics/full/' + PT.month[currentDay] + '/f-' + PT.day[currentDay] + 'b.' + PT.imageType[currentDay] + '"></img>'
+	} else {
+		var newImage = '<img src="/assets/graphics/full/' + PT.month[currentDay] + '/f-' + PT.day[currentDay] + '.' + PT.imageType[currentDay] + '"></img>'
+	}
+
+	document.querySelector('.day-content__link').innerHTML = newLink
+	document.querySelector('.day-content__date').innerHTML = newTitle
+	document.querySelector('.day-content__image').innerHTML = newImage
+	document.querySelector('.day-content__notes').innerHTML = newNotes
+}
+
+document.querySelector('.day-content__next').addEventListener('click', function(){
+	tomorrow()
+})
+
+document.querySelector('.day-content__prev').addEventListener('click', function(){
+	yesterday()
+})
+
+var prevElem = document.querySelector('.day-content__prev')
+var nextElem = document.querySelector('.day-content__next')
+
+// .css('color', '#e5c53e').css('margin-top', '')
+
+
+document.addEventListener('keydown', function(event) {
+  if (event.keyCode == 27) {
+  	killModal()
+  } else if (event.keyCode == 37) {
+  	prevElem.style.color = '#e5c53e'
+  	prevElem.style.margin = '0.1rem 0 0 2rem'
+  	yesterday()
+
+    setTimeout(leftreturncss, 300)
+  } else if (event.keyCode == 39) {
+  	nextElem.style.color = '#e5c53e'
+  	nextElem.style.margin = '0.1rem 4rem 0 0'
+  	tomorrow()
+
+    setTimeout(rightreturncss, 300)
+  }
 });
 
-function hideinfo_trigger(){
-    $('.info-trigger').delay(0).fadeOut();
+function leftreturncss() {
+	prevElem.style.color = 'black'
+	prevElem.style.margin = '0 0 0 2rem'
 }
 
-function showinfo_trigger(){
-    $('.info-trigger').delay(1000).fadeIn();
+function rightreturncss() {
+	nextElem.style.color = 'black'
+	nextElem.style.margin = '0 4rem 0 0'
 }
 
-function keyfunctions(){
-    $(document).keyup(function(e) {
-        switch(e.keyCode)  {
-          // Right
-          case 27:
-            $(".full-view").delay("slow").fadeOut();
-            $(".info-view").delay("fast").fadeOut();
-            showinfo_trigger();
-            break;
 
-          case 37:
-            $('.left-key')
-                .css("color", "#e5c53e")
-                .css("margin-top", "4px");
-            
-            tomorrow(currentday);
-
-            setTimeout(leftreturncss, 400);
-
-            function leftreturncss(){
-            $('.left-key')
-                .css("color", "")
-                .css("margin-top", "");                
-            }
-            break;
-
-          case 39:
-            $('.right-key')
-                .css("color", "#e5c53e")
-                .css("margin-top", "4px");
-
-            yesterday(currentday)
-
-            setTimeout(rightreturncss, 400);
-
-            function rightreturncss(){
-            $('.right-key')
-                .css("color", "")
-                .css("margin-top", "");                
-            }
-          break;
-
-        }
-    });
-
-    $(".close-me").click(function(){
-        $(".full-view").delay("slow").fadeOut();
-        showinfo_trigger();
-    });
-
-    $(".full-view-targetarea").click(function(){
-        $(".full-view").delay("slow").fadeOut();
-        showinfo_trigger();
-    });
-
-    $(".left-key").click(function(){
-        tomorrow(currentday);
-    });
-    $(".right-key").click(function(){
-        yesterday(currentday);
-    });
-};
-
-
-function yesterday(day){
-    if(day > 0){
-        var yesterday = parseInt(day) - 1;
-    }else{
-        var yesterday = 0
-        console.log("I have not the time nor the will to document every day of my past.")
-    };
-    pickaday(yesterday);
+function tomorrow() {
+	console.log(currentDay)
+	if(currentDay < totalDays) {
+		currentDay++		
+	} else {
+		console.log('who knows what the future holds!')
+	}
+	sunrise()
 }
 
-function tomorrow(day){
-    var present = PT.image.length - 1;
-
-    if(day < present){
-        var tomorrow = parseInt(day) + 1;
-    }else{
-        var tomorrow = present;
-        console.log("There is no tomorrow :(")
-    };
-    pickaday(tomorrow);
-}
-
-function pickaday(day){
-    //update global day for navigation
-    console.log(day)
-
-    currentday = day;
-    var translation = PT.image.length - day - 1;
-
-    // resert title, description, et image
-    $(".title").html(PT.title[translation])
-    $(".descrip").html(PT.descrip[translation])
-    $(".full-view-image img").attr('src', PT.image[translation]);
-    var linkname = PT.linkname[translation];
-
-    // make link, if there's one
-    var linksrc = '<a href="'+PT.link[translation]+'" target="_blank">'+linkname+' &nbsp <i class="collecticons collecticons-expand-top-right"></i></a>';
-
-    if(PT.link[translation] != ""){
-        $(".descrip-link").html(linksrc);            
-    }else{
-        $(".descrip-link").html("");            
-    };
+function yesterday() {
+	if(currentDay != 0) {
+		currentDay--		
+	} else {
+		console.log('dont wanna get bogged down in the past')
+	}
+	sunrise()
 }

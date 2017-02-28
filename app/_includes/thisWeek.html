@@ -1,0 +1,100 @@
+{% for i in (1..7) %}
+    <script>
+    // function link(){
+    //   if(PT.link != null){
+    //     var cart = PT.link;
+    //   }else{
+    //     var cart = []
+    //   };
+
+    //   cart.push("{{p.link}}")
+
+    //   PT.link = cart
+    // };
+    // function descrip(){
+    //   if(PT.descrip != null){
+    //     var cart = PT.descrip;
+    //   }else{
+    //     var cart = []
+    //   };
+
+    //   cart.push("{{p.descrip}}")
+
+    //   PT.descrip = cart
+    // };
+    // function image(){
+    //   if(PT.image != null){
+    //     var cart = PT.image;
+    //   }else{
+    //     var cart = []
+    //   };
+
+    //   cart.push("{{p.image}}")
+
+    //   PT.image = cart
+    // };
+    // function title(){
+    //   if(PT.title != null){
+    //     var cart = PT.title;
+    //   }else{
+    //     var cart = []
+    //   };
+
+    //   cart.push("{{p.title}}")
+
+    //   PT.title = cart
+    // };
+    // function linkname(){
+    //   if(PT.linkname != null){
+    //     var cart = PT.linkname;
+    //   }else{
+    //     var cart = []
+    //   };
+
+    //   cart.push("{{p.linkname}}")
+
+    //   PT.linkname = cart
+    // };
+
+    // link();
+    // descrip();
+    // image();
+    // title();
+    // linkname();
+  </script>
+
+  <div class="calendar-item calendar-item__{{p.num}}-{{i}}" style="background:url('assets/graphics/thumbs/{{p.num}}-{{i}}.jpg')">
+    {{p.num}}-{{i}}
+    <div class="image-link"></div>
+    <div class="calendar-date">
+      <p>{% if i == 1 %}
+        Mon
+        {% elsif i == 2 %}Tue
+        {% elsif i == 3 %}Wed
+        {% elsif i == 4 %}Thu
+        {% elsif i == 5 %}Fri
+        {% elsif i == 6 %}Sat
+        {% elsif i == 7 %}Sun{% endif %}</p>
+    </div>
+  </div>
+{% endfor %}
+
+<!-- 
+
+  <div class= "calendar-item script{{ p.num }} open" style="background:url('{{ p.image  }}') no-repeat; background-position:center; background-size:cover">
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+

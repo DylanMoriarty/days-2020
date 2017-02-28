@@ -1,86 +1,120 @@
 ---
 layout: default
 lang: en
+
 ---
 
-<div class="classy-shadow">
-</div>
-
-<div class="calendar-banner">
-  <div class="">
-</div>
-
-<div class="full-view">
-  <div class="close-me"><i class="collecticons collecticons-xmark"></i></div>
-  <div class="left-key"><i class="collecticons collecticons-leftkey-invert"></i></div>
-  <div class="right-key"><i class="collecticons collecticons-rightkey-invert"></i></div>
-  <div class="full-view-targetarea">
-    <div class="full-view-contain">
-      <fig class="full-view-image"><img src=""></img></fig>
-      <div class="float-right">
-        <h2 class="title">This is a title</h2>
-        <p class ="descrip">These are some words about the thing</p>
-        <p class ="descrip-link"></p>
+<!-- Create a modal that'll get filled with goodies -->
+<div class="day-modal hidden">
+  <div class="full-mask-exit"></div>
+  <div class="day-container">
+    <i class="collecticons collecticons-xmark"></i>
+    <div class="day-content__footer">
+      <span class="day-content__prev"><i class="collecticons collecticons-leftkey"></i></span>
+      <h3 class="day-content__date">Monday, July 1st</h3>
+      <span class="day-content__next"><i class="collecticons collecticons-rightkey"></i></span>
+    </div>
+    <div class="day-content">
+      <div class="day-content__image">
+        <img src="/assets/graphics/full/feb/f-19.gif"></img>
+      </div>
+      <div class="day-content__text">
+        <div class="day-content__link"><a href="place">Link Name Would Go Here</a></div>
+        <div class="day-content__notes">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="info-trigger">
-  <i class="collecticons collecticons-circle-information"></i>
-</div>
-
-<div class="info-view">
-  <div class="info-close-me"><i class="collecticons collecticons-xmark"></i></div>
-  <div class="info-view-contain">
-    <h3>What's this then?</h3>
-    <p>At the start of the year I thought it'd be nice to have a place for all the little things I do on a day to day basis. The stuff that doesn't really deserve long a winded blog post, but nice enough to warrant having a place on this great world wide museum that is the web.</p>
-    <h3>...it's just a Facebook Album</h3>
-    <p>Kinda. I didn't realize how similiar it was until things started working. Oh well. I can customize this a heckuva lot more and the project has served as good practice for web development. I'm content that people might 'like' something without hitting a button to show it.</p>
-    <h3>Anno?</h3>
-    <p>Anno is Latin for "In the Year Of", which is exactly what this is: Dylan in the year of 2016.</p>
-    <p>In truth I wanted to name this something better than just "Calendar". I hope it doesn't come off as pretentious! Anno was a nice, concise, interesting, and spot on term for it.</p>
-    <p>As always, Enjoy!
+<!-- Start by looping for each month -->
+{% for m in site.monthz %}  
+      
+  <!-- Make a beautiful lil' imdayCounter -->
+  <div class="month__masthead">
+    <img src="/assets/graphics/content/{{ m.month }}/cover.png"></img>
   </div>
-</div>
 
-<div class="header-graphic">
-  <img src="assets/graphics/2016/10-Oct/header.png"></img>
-</div>
+  <!-- Make a lil' bar for the dayz -->
+  <ul class="oh-the-days">
+    <li>Sun</li>
+    <li>Mon</li>
+    <li>Tue</li>
+    <li>Wed</li>
+    <li>Thu</li>
+    <li>Fri</li>
+    <li>Sat</li>
+  </ul>
 
-<div class="flex-container calendar">
-  {% include 16-Oct.html %}
-</div>
+  <!-- Make a row for the dayz -->
+  <div class="dayz-container">
+    <!-- Counter for how many day boxes we're building -->
+    {% assign dayCounter = 0 %}
 
-<div class="header-graphic">
-  <img src="assets/graphics/2016/9-Sept/header.png"></img>
-</div>
+    <!-- Create empty calendar blocks for the days not in the prior month -->
+    {% for i in (1..m.start) %}
+      {% capture dayCounter %}{{ dayCounter | plus:1 }}{% endcapture %}
+      <div class="calendar-item__empty"></div>
+    {% endfor %}
 
-<div class="flex-container calendar">
-  {% include 16-Sept.html %}
-</div>
+    {% for d in site.dayz | reversed %}
+      <!-- If we already have 7 days in this row, make a new row -->
+      {% capture dayCounter %}{{ dayCounter | plus:1 }}{% endcapture %}
+      {% if dayCounter == "8" || dayCounter == "16" || dayCounter == "24" || dayCounter == "32" %}
+        </div><div class="dayz-container">
+      {% endif %}
 
-<div class="header-graphic">
-  <img src="assets/graphics/2016/8-Augu/header.png"></img>
-</div>
+      <!-- Shoot over this days front matter to the javascript -->
+      <script>
+        // check if PT object exisits. Double quotes in case of an apostraphe in the text
+        var matchBox = ['{{d.num}}', '{{d.month}}', '{{d.when}}', '{{d.day}}', '{{d.link}}', "{{d.linkname}}", "{{d.notes}}", '{{d.imageType}}', '{{d.more}}']
 
-<div class="flex-container calendar">
-  {% include 16-Augu.html %}
-</div>
+        ptMaker('num', 0)
+        ptMaker('month', 1)
+        ptMaker('when', 2)
+        ptMaker('day', 3)
+        ptMaker('link', 4)
+        ptMaker('linkname', 5)
+        ptMaker('notes', 6)
+        ptMaker('imageType', 7)
+        ptMaker('more', 8)
 
+        function ptMaker(feature, matcher) {
+          if(PT[feature] != null){
+            var cart = PT[feature];
+          }else{
+            var cart = []
+          };
 
-<div class="header-graphic">
-  <img src="assets/graphics/2016/7-July/header.png"></img>
-</div>
+          // push new value to the array....
+          cart.push(matchBox[matcher])
 
-<div class="flex-container calendar">
-  {% include 16-July.html %}
-</div>
+          // and save that array, yeah!
+          PT[feature] = cart
+        }
 
-<div class="header-graphic">
-  <img src="assets/graphics/2016/6-June/header.png"></img>
-</div>
+        function openSesame(value) {
+          var currentDay = value
+          console.log(currentDay)
+        }
+      </script>
 
-<div class="flex-container calendar">
-  {% include 16-June.html %}
-</div>
+      <!-- Create the calendar blocks with content in them  -->
+      {% if d.month == m.month %}
+        <div class="calendar-item for-script-{{ d.num }}" style="background:url('/assets/graphics/thumbs/{{ m.month }}/t-{{ d.day }}.{{ d.imageType }}') no-repeat; background-position:center; background-size:cover">
+          <div class="calendar-date">
+            <p>{{ d.day }}</p>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+
+    <!-- Make empty containers for leftover spaces to fill out the week -->
+    {% if dayCounter != "7" || dayCounter != "15" || dayCounter != "23" || dayCounter != "31" %}
+      {% capture dayCounter %}{{ dayCounter | modulo: 7 | minus: 7 | times:-1 }}{% endcapture %}
+      {% for i in (1..dayCounter) %}
+        <div class="calendar-item__empty"></div>
+      {% endfor %}
+    {% endif %}
+    </div>
+
+{% endfor %}

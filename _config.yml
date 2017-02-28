@@ -16,13 +16,7 @@ syntax_highlighter: rouge
 baseurl: ""
 
 collections:
-  16-June:
+  monthz:
     output: true
-  16-July:
-    output: true
-  16-Augu:
-    output: true
-  16-Sept:
-    output: true
-  16-Oct:
+  dayz:
     output: true

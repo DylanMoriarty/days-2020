@@ -3,8 +3,9 @@ html{
 }
 
 body{
-		background-color: #DDD;
 		height: 100%;
+		background-image: url('/assets/graphics/meta/background.png');
+		background-repeat: repeat;
 }
 
 @font-face {
@@ -19,7 +20,6 @@ body{
 .page-content{
 		min-height: 100%;
 		height: auto;
-		margin: 0 auto -124px;
 		overflow: hidden;
 }
 
@@ -27,40 +27,64 @@ body{
 	position: fixed;
 	width: 100%;
 	top: 0;
+	padding-bottom: 2rem;
 	box-shadow: 0px 0px 1em rgba(0,0,0,0.8);
 }
 
-.flex-container {
-    display:flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-content: flex-start;
-    align-items: flex-start;
-    margin-bottom: 6em;
+.dayz-container {
+		display: flex;
+		justify-content: flex-start;
+		max-width: 100%;
+		margin: 0 2rem;
 }
- 	
-.calendar-item{
-    width: 200px;
-    height: 200px;
+
+.hidden {
+		display: none;
+}
+
+.month__masthead {
+	width: 100%;
+	margin-top: 2rem;
+	text-align: center;
+	img {
+		max-width: 60%;
+	}
+}
+
+.calendar-item {
+		max-width: 170px;
+	  height: 150px;
     flex-grow: 1;
     flex-shrink: 0;
-    flex-basis: 200px;
     margin: 2px;
 		border: 1px solid $card-border-color;
 		border-bottom: 2px solid $card-bottom-color;
 		position: relative;
-		background-color: #333;
 		background-position: center;
 		background-size: cover;
-		transition: opacity 0.3s;	
+		transition: opacity 0.3s;
+}
+
+.calendar-item__empty {
+		background-image: url(/assets/graphics/content/diagonal.svg);
+		background-size: 15px;
+		background-repeat: repeat;
+		max-width: 170px;
+	  height: 150px;
+    flex-grow: 1;
+    flex-shrink: 0;
+    margin: 2px;
+		border: 1px solid lighten($card-border-color, 10);
+		border-bottom: 2px solid lighten($card-bottom-color, 25);
+		position: relative;
+		transition: opacity 0.3s;
 }
 
 .calendar-item:hover{
 		opacity:0.5;
 		cursor: pointer;
 		.calendar-link, .image-link{
-			opacity: 0.9;
+			opacity: 0.8;
 		}
 }
 
@@ -68,13 +92,14 @@ body{
     content: "";
     display: block;
     background: url("/assets/graphics/collecticons/resize-out.svg") no-repeat;
-    background-size: 60px;
+    background-size: 100px;
     background-position: center;
     width: 100%;
     height: 100%;
 		position: absolute;
+		top: 0;
 		opacity: 0;
-		transition: opacity 0.3s;	
+		transition: opacity 0.3s;
 }
 
 .calendar-text{
@@ -86,19 +111,17 @@ body{
 	left: 0px;
 	top:0px;
 	width:auto;
-	background-color: #eee;
-	box-shadow: 0 2px 2px rgba(0,0,0,0.2);
-	border-right: 1px solid $card-border-color;
-	border-bottom: 1px solid $card-bottom-color;
-	border-bottom-right-radius: 3px;
-	padding: 0.1em 0 0;
+  background-color: rgba(220,220,220,0.9);
+  box-shadow: 2px 2px 8px 2px rgba(0,0,0,0.2);
+	border-right: 1px solid rgba(0,0,0,0.3);
+	border-bottom: 1px solid rgba(0,0,0,0.3);
+	
+	border-bottom-right-radius: 10px;
 	p{
 		font-family: "myHand";
 		font-size: 1em;
 		font-weight: 400;
-		margin: 0.4em 1em;
-		color: #444;
-/*		text-shadow: 0 1px 3px rgba(0,0,0,1);	*/	
+		margin: 0.25em 0.75em;
 	}
 }
 
@@ -148,8 +171,6 @@ body{
 	100% {opacity: 0.5;}
 }
 
-
-
 .birthday{
 	outline: 1px solid #aaa;
 	border: 4px solid gold;
@@ -174,3 +195,208 @@ body{
 	}
 }
 
+.oh-the-days {
+	border-bottom: 3px solid #999;
+	margin: 1rem 2rem 0.1rem;
+	padding-bottom: 0.5rem;
+	display: flex;
+	justify-content: space-between;
+	li {
+		text-transform: uppercase;
+		font-size: 0.9rem;
+		width: 14%;
+		text-align: center;
+		display: inline-block;
+	}
+}
+
+.day-modal {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	background-color: rgba(68,227,246,0.3);
+	background-image: url(/assets/graphics/content/diagonal-back.svg);
+	background-size: 15px;
+	background-repeat: repeat;
+	overflow: auto;
+}
+
+.day-container {
+	width: 95%;
+	background-color: white;
+	border: 1px solid #888;
+	margin: 2rem auto;
+	border-radius: 10px;
+	box-shadow: 0 2px 15px #888;
+	overflow: auto;
+	position: relative;
+}
+
+.day-content {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+.day-content__date {
+	color: #777;
+	font-size: 1.5rem;
+	top: 0.75rem;
+	position: absolute;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.day-content__image {
+	width: 40%;
+	float: left;
+	margin: 1rem 0 2rem 2rem;
+	img {
+		border: 1px solid #ddd;
+		max-width: 100%;
+	}
+  @media screen and (max-width: 1000px){
+  	text-align: center;
+    width: 100%;
+    margin: 1rem 0 2rem 0;
+    border: 0;
+  }
+}
+
+.day-content__text {
+	float: left;
+	width: 45%;
+	padding-left: 2rem;
+	margin: 1rem 2rem 2rem 2rem;
+	border-left: 2px solid #ddd;
+	margin-bottom: 2rem;
+  @media screen and (max-width: 1000px){
+    width: 80%;
+    padding: 0;
+    border-left: 0;
+    margin: 0;
+    float: initial;
+  }
+}
+
+.day-content__link {
+	font-size: 1rem;
+}
+
+.collecticons-xmark {
+	position: absolute;
+	right: 14px;
+	top: 14px;
+	z-index: 9999;
+	&:hover{
+		cursor: pointer;
+	}
+}
+
+.day-content__notes {
+	margin-top: 1rem;
+	font-size: 1rem;
+  @media screen and (max-width: 1000px){
+  	margin: 0 2rem 4rem;
+	}
+}
+
+.day-content__footer {
+	margin-top: 1rem;
+	padding-bottom: 4rem;
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+	width: 100%;
+	font-size: 3rem;
+	text-align: center;
+	position: relative;
+}
+
+.day-content__next {
+	margin-right: 4rem;
+	right: 0;
+	float: right;
+	position: absolute;
+	transition: 0.2s all;
+	z-index: 1;
+	&:hover {
+		cursor: pointer;
+		color: $Gold;
+	}
+	&:active {
+		margin-top: 0.1rem;
+	}
+  @media screen and (max-width: 530px){
+    display: none;
+  }
+}
+
+.day-content__prev {
+	margin-left: 2rem;
+	left: 0;
+	position: absolute;
+	float: left;
+	transition: 0.2s all;
+	z-index: 1;
+	&:hover {
+		cursor: pointer;
+		color: $Gold;
+	}
+	&:active {
+		margin-top: 0.1rem;
+	}
+  @media screen and (max-width: 530px){
+    display: none;
+  }
+}
+
+.full-mask-exit {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	transition: all 0.2s;
+	&:hover{
+		cursor: pointer;
+		background-color: rgba(0,0,0,0.05);
+	};
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.fadeOut {
+  animation-name: fadeOut;
+  animation-duration: 0.2s;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+}
+
+footer {
+	z-index: 7777;
+}
