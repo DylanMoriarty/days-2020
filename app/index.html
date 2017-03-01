@@ -16,7 +16,7 @@ lang: en
     </div>
     <div class="day-content">
       <div class="day-content__image">
-        <img src="/assets/graphics/full/feb/f-19.gif"></img>
+        <img src="./assets/graphics/full/feb/f-19.gif"></img>
       </div>
       <div class="day-content__text">
         <div class="day-content__link"><a href="place">Link Name Would Go Here</a></div>
@@ -31,7 +31,7 @@ lang: en
       
   <!-- Make a beautiful lil' imdayCounter -->
   <div class="month__masthead">
-    <img src="/assets/graphics/content/{{ m.month }}/cover.png"></img>
+    <img src="./assets/graphics/content/{{ m.month }}/cover.png"></img>
   </div>
 
   <!-- Make a lil' bar for the dayz -->
@@ -100,7 +100,7 @@ lang: en
 
       <!-- Create the calendar blocks with content in them  -->
       {% if d.month == m.month %}
-        <div class="calendar-item for-script-{{ d.num }}" style="background:url('/assets/graphics/thumbs/{{ m.month }}/t-{{ d.day }}.{{ d.imageType }}') no-repeat; background-position:center; background-size:cover">
+        <div class="calendar-item for-script-{{ d.num }}" style="background:url('./assets/graphics/thumbs/{{ m.month }}/t-{{ d.day }}.{{ d.imageType }}') no-repeat; background-position:center; background-size:cover">
           <div class="calendar-date">
             <p>{{ d.day }}</p>
           </div>

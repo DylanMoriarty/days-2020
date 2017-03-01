@@ -39,9 +39,9 @@ function sunrise() {
 	var newNotes = PT.notes[currentDay]
 
 	if(PT.more[currentDay]) {
-		var newImage = '<img src="/assets/graphics/full/' + PT.month[currentDay] + '/f-' + PT.day[currentDay] + 'a.' + PT.imageType[currentDay] + '"></img><img src="/assets/graphics/full/' + PT.month[currentDay] + '/f-' + PT.day[currentDay] + 'b.' + PT.imageType[currentDay] + '"></img>'
+		var newImage = '<img src="./assets/graphics/full/' + PT.month[currentDay] + '/f-' + PT.day[currentDay] + 'a.' + PT.imageType[currentDay] + '"></img><img src="./assets/graphics/full/' + PT.month[currentDay] + '/f-' + PT.day[currentDay] + 'b.' + PT.imageType[currentDay] + '"></img>'
 	} else {
-		var newImage = '<img src="/assets/graphics/full/' + PT.month[currentDay] + '/f-' + PT.day[currentDay] + '.' + PT.imageType[currentDay] + '"></img>'
+		var newImage = '<img src="./assets/graphics/full/' + PT.month[currentDay] + '/f-' + PT.day[currentDay] + '.' + PT.imageType[currentDay] + '"></img>'
 	}
 
 	document.querySelector('.day-content__link').innerHTML = newLink

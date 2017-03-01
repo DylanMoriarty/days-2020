@@ -4,7 +4,7 @@ html{
 
 body{
 		height: 100%;
-		background-image: url('/assets/graphics/meta/background.png');
+		background-image: url('./assets/graphics/meta/background.png');
 		background-repeat: repeat;
 }
 
@@ -66,7 +66,7 @@ body{
 }
 
 .calendar-item__empty {
-		background-image: url(/assets/graphics/content/diagonal.svg);
+		background-image: url(./assets/graphics/content/diagonal.svg);
 		background-size: 15px;
 		background-repeat: repeat;
 		max-width: 170px;
@@ -91,7 +91,7 @@ body{
 .image-link{
     content: "";
     display: block;
-    background: url("/assets/graphics/collecticons/resize-out.svg") no-repeat;
+    background: url("./assets/graphics/collecticons/resize-out.svg") no-repeat;
     background-size: 100px;
     background-position: center;
     width: 100%;
@@ -216,7 +216,7 @@ body{
 	height: 100%;
 	z-index: 1;
 	background-color: rgba(68,227,246,0.3);
-	background-image: url(/assets/graphics/content/diagonal-back.svg);
+	background-image: url(./assets/graphics/content/diagonal-back.svg);
 	background-size: 15px;
 	background-repeat: repeat;
 	overflow: auto;
