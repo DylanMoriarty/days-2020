@@ -99,6 +99,7 @@ function tomorrow() {
 		currentDay++		
 	} else {
 		console.log('who knows what the future holds!')
+  	killModal()
 	}
 	sunrise()
 }
@@ -108,6 +109,7 @@ function yesterday() {
 		currentDay--		
 	} else {
 		console.log('dont wanna get bogged down in the past')
+  	killModal()
 	}
 	sunrise()
 }
