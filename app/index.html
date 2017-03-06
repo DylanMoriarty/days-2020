@@ -26,12 +26,44 @@ lang: en
   </div>
 </div>
 
+<!-- Loop over days to create data object.-->
+{% for d in site.dayz %}
+  <script>
+    // check if PT object exisits. Double quotes in case of an apostraphe in the text
+    var matchBox = ['{{d.num}}', '{{d.month}}', '{{d.when}}', '{{d.day}}', '{{d.link}}', "{{d.linkname}}", "{{d.notes}}", '{{d.imageType}}', '{{d.more}}']
+
+    ptMaker('num', 0)
+    ptMaker('month', 1)
+    ptMaker('when', 2)
+    ptMaker('day', 3)
+    ptMaker('link', 4)
+    ptMaker('linkname', 5)
+    ptMaker('notes', 6)
+    ptMaker('imageType', 7)
+    ptMaker('more', 8)
+
+    function ptMaker(feature, matcher) {
+      if(PT[feature] != null){
+        var cart = PT[feature];
+      }else{
+        var cart = []
+      };
+
+      // push new value to the array....
+      cart.push(matchBox[matcher])
+
+      // and save that array, yeah!
+      PT[feature] = cart
+    }
+  </script>
+{% endfor %}
+
 <!-- Start by looping for each month -->
-{% for m in site.monthz %}  
+{% for m in site.monthz reversed %}  
       
   <!-- Make a beautiful lil' imdayCounter -->
   <div class="month__masthead">
-    <img src="./assets/graphics/content/{{ m.month }}/cover.png"></img>
+    <img src="./assets/graphics/covers/{{ m.month }}.png"></img>
   </div>
 
   <!-- Make a lil' bar for the dayz -->
@@ -56,55 +88,22 @@ lang: en
       <div class="calendar-item__empty"></div>
     {% endfor %}
 
-    {% for d in site.dayz | reversed %}
-      <!-- If we already have 7 days in this row, make a new row -->
-      {% capture dayCounter %}{{ dayCounter | plus:1 }}{% endcapture %}
-      {% if dayCounter == "8" || dayCounter == "16" || dayCounter == "24" || dayCounter == "32" %}
-        </div><div class="dayz-container">
-      {% endif %}
-
-      <!-- Shoot over this days front matter to the javascript -->
-      <script>
-        // check if PT object exisits. Double quotes in case of an apostraphe in the text
-        var matchBox = ['{{d.num}}', '{{d.month}}', '{{d.when}}', '{{d.day}}', '{{d.link}}', "{{d.linkname}}", "{{d.notes}}", '{{d.imageType}}', '{{d.more}}']
-
-        ptMaker('num', 0)
-        ptMaker('month', 1)
-        ptMaker('when', 2)
-        ptMaker('day', 3)
-        ptMaker('link', 4)
-        ptMaker('linkname', 5)
-        ptMaker('notes', 6)
-        ptMaker('imageType', 7)
-        ptMaker('more', 8)
-
-        function ptMaker(feature, matcher) {
-          if(PT[feature] != null){
-            var cart = PT[feature];
-          }else{
-            var cart = []
-          };
-
-          // push new value to the array....
-          cart.push(matchBox[matcher])
-
-          // and save that array, yeah!
-          PT[feature] = cart
-        }
-
-        function openSesame(value) {
-          var currentDay = value
-          console.log(currentDay)
-        }
-      </script>
-
-      <!-- Create the calendar blocks with content in them  -->
+    {% for d in site.dayz %}
       {% if d.month == m.month %}
-        <div class="calendar-item for-script-{{ d.num }}" style="background:url('./assets/graphics/thumbs/{{ m.month }}/t-{{ d.day }}.{{ d.imageType }}') no-repeat; background-position:center; background-size:cover">
-          <div class="calendar-date">
-            <p>{{ d.day }}</p>
+        <!-- If we already have 7 days in this row, make a new row -->
+        {% capture dayCounter %}{{ dayCounter | plus:1 }}{% endcapture %}
+        {% if dayCounter == "8" || dayCounter == "16" || dayCounter == "24" || dayCounter == "32" %}
+          </div><div class="dayz-container">
+        {% endif %}
+
+        <!-- Create the calendar blocks with content in them  -->
+        {% if d.month == m.month %}
+          <div class="calendar-item for-script-{{ d.num }}" style="background:url('./assets/graphics/thumbs/{{ m.month }}/t-{{ d.day }}.{{ d.imageType }}') no-repeat; background-position:center; background-size:cover">
+            <div class="calendar-date">
+              <p>{{ d.day }}</p>
+            </div>
           </div>
-        </div>
+        {% endif %}
       {% endif %}
     {% endfor %}
 

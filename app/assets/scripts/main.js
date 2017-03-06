@@ -2,7 +2,6 @@ var currentDay = 4
 var taco = document.querySelector('.day-modal')
 var numOfDays = document.querySelectorAll('.calendar-item')
 var totalDays = numOfDays.length - 1
-console.log(PT)
 
 document.querySelector('.collecticons-xmark').addEventListener('click', function(){
 	killModal()
@@ -34,6 +33,8 @@ function killModal() {
 }
 
 function sunrise() {
+	console.log(PT)
+
 	var newTitle = PT.when[currentDay]
 	var newLink = '<a href="' + PT.link[currentDay] + '">' + PT.linkname[currentDay] + '</a>'
 	var newNotes = PT.notes[currentDay]
@@ -91,7 +92,6 @@ function rightreturncss() {
 	nextElem.style.color = 'black'
 	nextElem.style.margin = '0 4rem 0 0'
 }
-
 
 function tomorrow() {
 	console.log(currentDay)
