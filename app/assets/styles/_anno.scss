@@ -224,13 +224,14 @@ body{
 
 .day-container {
 	width: 95%;
+	height: 80%;
 	background-color: white;
 	border: 1px solid #888;
-	margin: 2rem auto;
+	margin: 2rem;
 	border-radius: 10px;
 	box-shadow: 0 2px 15px #888;
-	overflow: auto;
-	position: relative;
+	overflow: scroll;
+	position: fixed;
 }
 
 .day-content {
@@ -245,11 +246,11 @@ body{
 	top: 0.75rem;
 	position: absolute;
 	width: 100%;
-	margin: 0 auto;
+	margin: 1rem auto;
 }
 
 .day-content__image {
-	width: 40%;
+	width: 50%;
 	float: left;
 	margin: 1rem 0 2rem 2rem;
 	img {
@@ -266,7 +267,7 @@ body{
 
 .day-content__text {
 	float: left;
-	width: 45%;
+	width: 35%;
 	padding-left: 2rem;
 	margin: 1rem 2rem 2rem 2rem;
 	border-left: 2px solid #ddd;
@@ -285,11 +286,13 @@ body{
 }
 
 .collecticons-xmark {
+	color: #aaa;
 	position: absolute;
 	right: 14px;
 	top: 14px;
 	z-index: 9999;
 	&:hover{
+		color: #ccc;
 		cursor: pointer;
 	}
 }
@@ -303,13 +306,15 @@ body{
 }
 
 .day-content__footer {
-	margin-top: 1rem;
+	padding-top: 1rem;
 	padding-bottom: 4rem;
 	border-bottom: 1px solid rgba(0,0,0,0.2);
 	width: 100%;
 	font-size: 3rem;
 	text-align: center;
 	position: relative;
+	background-color: #212121;
+	color: #777;
 }
 
 .day-content__next {
