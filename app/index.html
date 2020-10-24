@@ -7,23 +7,31 @@ lang: en
 <!-- Create a modal that'll get filled with goodies -->
 <div class="day-modal hidden">
   <div class="full-mask-exit"></div>
+
   <div class="day-container">
     <i class="collecticons collecticons-xmark"></i>
-    <div class="day-content__footer">
-      <span class="day-content__prev"><i class="collecticons collecticons-leftkey"></i></span>
-      <h3 class="day-content__date">Monday, July 1st</h3>
-      <span class="day-content__next"><i class="collecticons collecticons-rightkey"></i></span>
-    </div>
+
+    <span class="day-content__prev">
+      <i class="collecticons collecticons-leftkey-invert"></i>
+    </span>
+    <span class="day-content__next">
+      <i class="collecticons collecticons-rightkey-invert"></i>
+    </span>
+
+    <h3 class="day-content__date">Monday, July 1st</h3>
+
+
     <div class="day-content">
       <div class="day-content__image">
         <img src="./assets/graphics/full/feb/f-19.gif"></img>
       </div>
       <div class="day-content__text">
+        <div class="day-content__notes">"Lorem ipsum."</div>
         <div class="day-content__link"><a href="place">Link Name Would Go Here</a></div>
-        <div class="day-content__notes">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</div>
       </div>
     </div>
   </div>
+
 </div>
 
 <!-- Loop over days to create data object.-->

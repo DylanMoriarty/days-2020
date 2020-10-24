@@ -55,6 +55,18 @@ function sunrise() {
 			+ '"></img>'
 	}
 
+  console.log(newNotes)
+
+  if (newNotes === '') {
+    console.log('ohio state')
+    document.querySelector('.day-content__text').style.display = 'none'
+    document.querySelector('.day-content__image').style.flexBasis = '100%'
+  } else {
+    console.log('other')
+    document.querySelector('.day-content__text').style.display = 'block'
+    document.querySelector('.day-content__image').style.flexBasis = '66.66%'
+  }
+
 	document.querySelector('.day-content__link').innerHTML = newLink
 	document.querySelector('.day-content__date').innerHTML = newTitle
 	document.querySelector('.day-content__image').innerHTML = newImage
@@ -79,14 +91,14 @@ document.addEventListener('keydown', function(event) {
   if (event.keyCode == 27) {
   	killModal()
   } else if (event.keyCode == 37) {
-  	prevElem.style.color = '#e5c53e'
-  	prevElem.style.margin = '0.1rem 0 0 2rem'
+  	prevElem.style.color = 'rgba(100, 251, 255, 0.8)'
+  	prevElem.style.margin = '0.1rem 0 0 0'
   	yesterday()
 
     setTimeout(leftreturncss, 300)
   } else if (event.keyCode == 39) {
-  	nextElem.style.color = '#e5c53e'
-  	nextElem.style.margin = '0.1rem 4rem 0 0'
+  	nextElem.style.color = 'rgba(100, 251, 255, 0.8)'
+  	nextElem.style.margin = '0.1rem 0 0 0'
   	tomorrow()
 
     setTimeout(rightreturncss, 300)
@@ -94,13 +106,13 @@ document.addEventListener('keydown', function(event) {
 });
 
 function leftreturncss() {
-	prevElem.style.color = '#777'
-	prevElem.style.margin = '0 0 0 2rem'
+	prevElem.style.color = '#fff'
+	prevElem.style.margin = '0 0 0 0'
 }
 
 function rightreturncss() {
-	nextElem.style.color = '#777'
-	nextElem.style.margin = '0 4rem 0 0'
+	nextElem.style.color = '#fff'
+	nextElem.style.margin = '0 0 0 0'
 }
 
 function tomorrow() {
