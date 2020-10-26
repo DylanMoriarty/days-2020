@@ -35,6 +35,9 @@ function sunrise() {
 	var newLink = '<a href="' + PT.link[currentDay] + '">' + PT.linkname[currentDay] + '</a>'
 	var newNotes = PT.notes[currentDay]
 
+  var newTransp = (PT.transp[currentDay] ? 'class="transparent-image"' : '')
+  console.log(newTransp)
+
 	if(PT.more[currentDay]) {
 		var newImage = '\
 			<img src="./assets/graphics/full/'
@@ -45,24 +48,24 @@ function sunrise() {
 			 + PT.month[currentDay] + '/f-' 
 			 + PT.day[currentDay] + 'b.' 
 			 + PT.imageType[currentDay] 
-			 + '"></img>'
+			 + '" ' 
+       + newTransp 
+       + '></img>'
 	} else {
 		var newImage = '\
 			<img src="./assets/graphics/full/' 
 			+ PT.month[currentDay] + '/f-' 
 			+ PT.day[currentDay] + '.' 
 			+ PT.imageType[currentDay] 
-			+ '"></img>'
+			+ '" '
+      + newTransp
+      + '></img>'
 	}
 
-  console.log(newNotes)
-
   if (newNotes === '') {
-    console.log('ohio state')
     document.querySelector('.day-content__text').style.display = 'none'
     document.querySelector('.day-content__image').style.flexBasis = '100%'
   } else {
-    console.log('other')
     document.querySelector('.day-content__text').style.display = 'block'
     document.querySelector('.day-content__image').style.flexBasis = '66.66%'
   }
@@ -116,7 +119,6 @@ function rightreturncss() {
 }
 
 function tomorrow() {
-	console.log(currentDay)
 	if(currentDay < totalDays) {
 		currentDay++		
 	} else {

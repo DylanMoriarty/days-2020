@@ -38,7 +38,7 @@ lang: en
 {% for d in site.dayz %}
   <script>
     // check if PT object exisits. Double quotes in case of an apostraphe in the text
-    var matchBox = ['{{d.num}}', '{{d.month}}', '{{d.when}}', '{{d.day}}', '{{d.link}}', "{{d.linkname}}", "{{d.notes}}", '{{d.imageType}}', '{{d.more}}']
+    var matchBox = ['{{d.num}}', '{{d.month}}', '{{d.when}}', '{{d.day}}', '{{d.link}}', "{{d.linkname}}", "{{d.notes}}", '{{d.imageType}}', '{{d.more}}', '{{d.transp}}']
 
     ptMaker('num', 0)
     ptMaker('month', 1)
@@ -49,6 +49,7 @@ lang: en
     ptMaker('notes', 6)
     ptMaker('imageType', 7)
     ptMaker('more', 8)
+    ptMaker('transp', 9)
 
     function ptMaker(feature, matcher) {
       if(PT[feature] != null){
@@ -106,7 +107,7 @@ lang: en
 
         <!-- Create the calendar blocks with content in them  -->
         {% if d.month == m.month %}
-          <div class="calendar-item for-script-{{ d.num }}" style="background:url('./assets/graphics/thumbs/{{ m.month }}/t-{{ d.day }}.{{ d.imageType }}') no-repeat; background-position:center; background-size:cover">
+          <div class="calendar-item for-script-{{ d.num }}" style="background:url('./assets/graphics/thumbs/{{ m.month }}/t-{{ d.day }}.jpg') no-repeat; background-position:center; background-size:cover">
             <div class="calendar-date">
               <p>{{ d.day }}</p>
             </div>

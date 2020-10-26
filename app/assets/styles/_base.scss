@@ -81,13 +81,21 @@ a {
 }
 
 header {
-    background: rgba(0,0,0,0.85);
-    border-bottom: solid 3px #b59393;
-    height: 37px;
-    top: 0;
-    transition: top 0.2s ease-in-out;
+  position: relative;
+  background: rgba(0,0,0,0.85);
+  height: 37px;
+  top: 0;
+  transition: top 0.2s ease-in-out;
+  width: 100%;
+  &:after {
+    position: absolute;
+    content: "";
     width: 100%;
-    z-index:1000;
+    height: 1px;
+    border-bottom: solid 5px #b59393;
+    top: 36px;
+    z-index: -1;
+  }
 }
 
 .nav-up {
@@ -453,7 +461,6 @@ fig{
 ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
 #footer {
-  border-top: solid 3px #b59393;
   background-color: rgba(0, 0, 0, 0.85);
   font-size: 0.8em;
   width: 100%;
@@ -461,6 +468,15 @@ fig{
   position:relative;
   bottom:0;
   color: #999;
+  &:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    height: 1px;
+    border-top: solid 4px #b59393;
+  }
 }
 
 
