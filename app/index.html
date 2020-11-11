@@ -117,7 +117,7 @@ lang: en
     {% endfor %}
 
     <!-- Make empty containers for leftover spaces to fill out the week -->
-    {% if dayCounter != "7" || dayCounter != "15" || dayCounter != "23" || dayCounter != "31" %}
+    {% if dayCounter != "0" and dayCounter != "7" and dayCounter != "14" and dayCounter != "21" and dayCounter != "28" %}
       {% capture dayCounter %}{{ dayCounter | modulo: 7 | minus: 7 | times:-1 }}{% endcapture %}
       {% for i in (1..dayCounter) %}
         <div class="calendar-item__empty"></div>

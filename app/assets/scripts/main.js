@@ -32,7 +32,7 @@ function killModal() {
 
 function sunrise() {
 	var newTitle = PT.when[currentDay]
-	var newLink = '<a href="' + PT.link[currentDay] + '">' + PT.linkname[currentDay] + '</a>'
+	var newLink = '<a href="' + PT.link[currentDay] + '" target="_blank">' + PT.linkname[currentDay] + '</a>'
 	var newNotes = PT.notes[currentDay]
 
   var newTransp = (PT.transp[currentDay] ? 'class="transparent-image"' : '')
