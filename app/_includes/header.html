@@ -1,6 +1,12 @@
 	<header class ="nav-down">
 		<div class ="nav-container">
-			<span class= "nav-home"><a href= "https://dylanmoriarty.github.io/"><i class="collecticons collecticons-dm"></i></a>
+      {% assign toGo = 0 %}
+
+      {% for d in site.dayz %}
+        {% capture toGo %}{{ toGo | plus:1 }}{% endcapture %}
+      {% endfor %}
+
+      {{ toGo }}/365
 		</div>
 
 		<script>

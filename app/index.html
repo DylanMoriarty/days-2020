@@ -113,6 +113,9 @@ lang: en
             </div>
           </div>
         {% endif %}
+
+
+
       {% endif %}
     {% endfor %}
 
@@ -123,6 +126,12 @@ lang: en
         <div class="calendar-item__empty"></div>
       {% endfor %}
     {% endif %}
+    </div>
+
+    <div class="music-box">
+      <img class="music-box_finger" src="./assets/graphics/content/music-box.gif" />
+      <a href="{{ m.tunes }}" target="_blank">This Month's Tunes</a>
+      <img class="music-box_finger" src="./assets/graphics/content/music-box-r.gif" />
     </div>
 
 {% endfor %}

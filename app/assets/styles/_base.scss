@@ -92,7 +92,7 @@ header {
     content: "";
     width: 100%;
     height: 1px;
-    border-bottom: solid 5px #b59393;
+    border-bottom: solid 5px darken(rgba(100, 251, 255, 0.6), 60);
     top: 36px;
     z-index: -1;
   }
@@ -105,8 +105,10 @@ header {
 .nav-container{
   text-align: center;
   padding-top:9px;
-  margin-right: 5%;
   height: 38px;
+  font-family: "Martel Sans";
+  color: #bbb;
+  font-size: 14px;
   i{
     display: none;
     @media screen and (max-width: 530px){
