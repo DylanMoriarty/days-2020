@@ -101,7 +101,7 @@ lang: en
       {% if d.month == m.month %}
         <!-- If we already have 7 days in this row, make a new row -->
         {% capture dayCounter %}{{ dayCounter | plus:1 }}{% endcapture %}
-        {% if dayCounter == "8" or dayCounter == "15" or dayCounter == "22" or dayCounter == "29" %}
+        {% if dayCounter == "8" or dayCounter == "15" or dayCounter == "22" or dayCounter == "29" or dayCounter == "36" %}
           </div><div class="dayz-container">
         {% endif %}
 
