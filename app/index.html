@@ -107,7 +107,7 @@ lang: en
 
         <!-- Create the calendar blocks with content in them  -->
         {% if d.month == m.month %}
-          <div class="calendar-item for-script-{{ d.num }}" style="background:url('./assets/graphics/thumbs/{{ m.month }}/t-{{ d.day }}.jpg') no-repeat; background-position:center; background-size:cover">
+          <div class="calendar-item for-script-{{ d.num }}" style="background:url('./assets/graphics/thumbs/{{ m.month }}/t-{{ d.day }}.{{d.imageType}}') no-repeat; background-position:center; background-size:cover">
             <div class="calendar-date">
               <p>{{ d.day }}</p>
             </div>
